@@ -1,0 +1,32 @@
+﻿<Window x:Class="Etlap.etelForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Etlap"
+        mc:Ignorable="d"
+        Title="etelForm" Height="450" Width="800">
+    <Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Label Content="Név:" Grid.Row="0" />
+		<Label Content="Leírás:" Grid.Row="1"/>
+		<Label Content="Kategoria:" Grid.Row="2"/>
+		<Label Content="Ár:" Grid.Row="3"/>
+		<TextBox x:Name="newEtelNev" Grid.Column="1" Height="50"/>
+		<TextBox x:Name="newEtelLeiras" Grid.Column="1" Grid.Row="1" Height="50"/>
+		<TextBox x:Name="newEtelKategoria" Grid.Column="1" Grid.Row="2" Height="50"/>
+		<TextBox x:Name="newEtelAr" Grid.Column="1" Grid.Row="3" Height="50"/>
+		<Button x:Name="ujHozzaadButton" Grid.Row="4" Content="Hozzáad" Height="50" Click="ujHozzaadButton_Click"/>
+	</Grid>
+</Window>

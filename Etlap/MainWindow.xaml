@@ -6,7 +6,27 @@
         xmlns:local="clr-namespace:Etlap"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+	
     <Grid>
 
-    </Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<StackPanel Orientation="Horizontal">
+			<Button x:Name="ujButton" Grid.Row="1" Content="Új étel felvétel" Width="100" Margin="10" Height="20" VerticalAlignment="Center" Click="ujButton_Click"/>
+			<Button x:Name="torlesButton" Grid.Row="1" Content="Törlés" Width="100" Margin="10" Height="20" VerticalAlignment="Center" Click="torlesButton_Click"/>
+		</StackPanel>
+		
+		<DataGrid x:Name="etelData" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0" Grid.Row="2"/>
+		<Label Grid.Row="3" x:Name="etelLeiras"/>
+		<TextBox HorizontalAlignment="Left" Margin="26,19,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+		<TextBox HorizontalAlignment="Left" Margin="27,52,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+	</Grid>
 </Window>

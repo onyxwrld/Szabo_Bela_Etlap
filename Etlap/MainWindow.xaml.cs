@@ -20,9 +20,30 @@ namespace Etlap
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		etlapService etS = new etlapService();
 		public MainWindow()
 		{
 			InitializeComponent();
+			Read();
+		}
+		private void Read()
+		{
+			etelData.ItemsSource = etS.GetAll();
+		}
+
+		private void ujButton_Click(object sender, RoutedEventArgs e)
+		{
+			etelForm form = new etelForm(etS);
+			form.Closed += (_, _) =>
+			{
+				Read();
+			};
+			form.ShowDialog();
+		}
+
+		private void torlesButton_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
