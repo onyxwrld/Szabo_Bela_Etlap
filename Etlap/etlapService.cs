@@ -44,7 +44,52 @@ namespace Etlap
 			CloseConnection();
 			return etelek;
 		}
-
+		public bool UpdateEgyElemSzazalek(int id, etel etel1, int emeles)
+		{
+			OpenConnection();
+			string sql = @"UPDATE etlap SET ar = @price WHERE id = @id";
+			MySqlCommand command = connection.CreateCommand();
+			command.CommandText = sql;
+			command.Parameters.AddWithValue("@price", etel1.ar * (1+ (emeles/100.0)));
+			command.Parameters.AddWithValue("@id", id);
+			int affectedRows = command.ExecuteNonQuery();
+			CloseConnection();
+			return affectedRows == 1;
+		}
+		public bool UpdateEgyElemFt(int id, etel etel1, int emeles)
+		{
+			OpenConnection();
+			string sql = @"UPDATE etlap SET ar = @price WHERE id = @id";
+			MySqlCommand command = connection.CreateCommand();
+			command.CommandText = sql;
+			command.Parameters.AddWithValue("@price", etel1.ar + emeles);
+			command.Parameters.AddWithValue("@id", id);
+			int affectedRows = command.ExecuteNonQuery();
+			CloseConnection();
+			return affectedRows == 1;
+		}
+		public bool UpdateTobbElemFt(int emeles)
+		{
+			OpenConnection();
+			string sql = @"UPDATE etlap SET ar = ar + @price";
+			MySqlCommand command = connection.CreateCommand();
+			command.CommandText = sql;
+			command.Parameters.AddWithValue("@price", emeles);
+			int affectedRows = command.ExecuteNonQuery();
+			CloseConnection();
+			return affectedRows == 1;
+		}
+		public bool UpdateTobbElemSzazalek(int emeles)
+		{
+			OpenConnection();
+			string sql = @"UPDATE etlap SET ar = ar * (1 + @price / 100)";
+			MySqlCommand command = connection.CreateCommand();
+			command.CommandText = sql;
+			command.Parameters.AddWithValue("@price", emeles);
+			int affectedRows = command.ExecuteNonQuery();
+			CloseConnection();
+			return affectedRows == 1;
+		}
 		public bool Create(etel etel1)
 		{
 			OpenConnection();
@@ -62,7 +107,7 @@ namespace Etlap
 		public bool Delete(int id)
 		{
 			OpenConnection();
-			string sql = "DELETE FROM etel WHERE id = @id";
+			string sql = "DELETE FROM etlap WHERE id = @id";
 			MySqlCommand command = connection.CreateCommand();
 			command.CommandText = sql;
 			command.Parameters.AddWithValue("@id", id);
